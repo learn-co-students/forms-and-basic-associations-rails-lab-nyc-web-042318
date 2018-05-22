@@ -3,9 +3,13 @@
 <%= form_for @song  do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
+
+  <%= f.label :artist_name %>
+  <%= f.text_field :artist_name %>
+
+  <%= f.label :genre_id %>
+  <%= f.select :genre_id, @genres.all.sort_by{|p| p.name}.collect { |p| [ p.name, p.id ] }%>
   <br />
 
-  <%= f.submit %>
+  <%= f.submit id: "commit" %>
 <% end %>
-
-
