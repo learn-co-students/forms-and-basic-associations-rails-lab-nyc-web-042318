@@ -3,9 +3,22 @@
 <%= form_for @song  do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
+
+  <%= f.label :artist_name %>
+  <%= f.text_field :artist_name %>
+
+  <%= f.label :genre_id %>
+  <%= f.select :genre_id, @genres.all.sort_by{|p| p.name}.collect { |p| [ p.name, p.id ] }%>
+
+  <%= f.fields_for :notes do |n| %>
+  Note:<%= n.text_field :n1,id: "song_notes_1" %>
+  Note:<%= n.text_field :n2, id: "song_notes_2" %>
+
+  <% end %>
+
+
+
   <br />
 
-  <%= f.submit %>
+  <%= f.submit id: "commit" %>
 <% end %>
-
-
